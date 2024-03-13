@@ -21,6 +21,8 @@ xxxxxxxxxxxx        bridge              bridge
 The default network mode in Docker. It creates a private network between the host and containers, allowing
 containers to communicate with each other and with the host system.
 
+![image](https://user-images.githubusercontent.com/43399466/217745543-f40e5614-ac34-4b78-85a9-91b24512388d.png)
+
 If you want to secure your containers and isolate them from the default bridge network you can also create your own bridge network.
 
 ```
