@@ -14,7 +14,7 @@
 
 The Dockerfile supports the following instructions:
 | Instruction | Description |
-| ----------- | ---------------------------------------------------------- |
+| :-----------: | :----------------------------------------------------------: |
 | FROM | Create a new build stage from a base image. |
 | RUN | Execute build commands. |
 | MAINTAINER | Specify the author of an image. |
