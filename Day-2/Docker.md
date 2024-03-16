@@ -1,14 +1,35 @@
-🐳 What is Docker?
-Docker is a platform implementing containerization, allowing you to build container images, run them to create containers, and push these containers to registries like DockerHub.
+## Dockerfile
 
-LifeCycle of Docker:
-🔨 docker build -> builds docker images from Dockerfile
-▶️ docker run -> runs container from docker images
-🚀 docker push -> push the container image to public/private registries to share the docker images
+- A Dockerfile is indeed a text file containing a set of instructions. These instructions define how
+  to build a Docker image step by step.
+- Dockerfiles automate the process of creating Docker images, ensuring consistency and
+  reproducibility in the deployment of applications.
 
-Terminologies in Docker:
-i) Docker daemon: The Docker daemon, called dockerd, listens for requests and handles Docker stuff like images and containers. It's like the boss overseeing everything, making sure everything runs smoothly. It can even talk to other daemons.
-ii) Docker client: The Docker client, simply called 'docker', is how most people control Docker. When you type commands like 'docker run', it tells the dockerd what to do, and it gets done. Think of it like your personal assistant for Docker tasks.
-iii) Docker registries: A Docker registry is like a storage place for Docker images. Docker Hub is a popular one that anyone can access, and Docker usually looks there first. You can also set up your own private registry if you prefer. When you use commands like 'docker pull' or 'docker run', Docker fetches images from your chosen registry. And if you use 'docker push', your image gets uploaded there.
-iv) Images: An image serves as a blueprint for Docker containers, containing instructions for their setup. In Docker, you can make your own images or use ones made by others. To create your own, you write a Dockerfile that outlines the steps. Each step in the Dockerfile adds a layer to the image. When you update the Dockerfile and rebuild, only the changed layers are updated.
-This makes Docker images lightweight, small, and speedy compared to other virtualization methods.
+### Steps for Dockerfile Usage:
+
+1. Create a File Named Dockerfile.
+2. Add Instructions in the Dockerfile.
+3. Build a Dockerfile to Create an Image.
+4. Run the Image to Create a Container.
+
+The Dockerfile supports the following instructions:
+| Instruction | Description |
+| ----------- | ---------------------------------------------------------- |
+| FROM | Create a new build stage from a base image. |
+| RUN | Execute build commands. |
+| MAINTAINER | Specify the author of an image. |
+COPY Copy files and directories.
+ADD Add local or remote files and directories.
+EXPOSE Describe which ports your application is listening on.
+WORKDIR Change working directory.
+CMD Specify default commands.
+ENTRYPOINTS Specify default executable.
+ENV Set environment variables.
+VOLUME Create volume mounts.
+USER Set user and group ID.
+LABEL Add metadata to an image.
+ONBUILD Specify instructions for when the image is used in a build.
+SHELL Set the default shell of an image.
+ARG Use build-time variables.
+HEALTHCHECK Check a container's health on startup.
+STOPSIGNAL Specify the system call signal for exiting a container.
