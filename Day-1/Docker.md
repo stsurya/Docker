@@ -80,10 +80,11 @@ Docker containers, providing consistency and portability across different enviro
 created using Dockerfiles, stored in registries like Docker Hub, and can be easily pulled, pushed, and
 shared.
 Or
-Docker images are the read-only binary templates used to create a docker container
+Docker images are the read-only binary templates used to create a docker container.
 Or
-Single file with all dependencies and configuration required to run a program
-Ways to create a Images (Three ways )
+Single file with all dependencies and configuration required to run a program.
+
+Ways to create a Images (Three ways):
 
 1. Take images from Docker Hub
 2. Create image form Docker file
