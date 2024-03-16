@@ -4,9 +4,9 @@ Docker is an open platform for developing, shipping, and running applications. D
 separate your applications from your infrastructure so you can deliver software quickly. With Docker,
 you can manage your infrastructure in the same ways you manage your applications.
 
-- Docker release March 2013 by Solomon Hykes and Sebastian
-- Docker is a platform as a service that uses OS-level virtualization
-- Docker is an open-source centralized platform designed to create deploy and run applications
+- Docker release March 2013 by Solomon Hykes and Sebastian.
+- Docker is a platform as a service that uses OS-level virtualization.
+- Docker is an open-source centralized platform designed to create deploy and run applications.
 - Docker uses a container on the Host OS to run applications. It allows applications to use the same host computer rather than creating a whole Virtual OS.
 - We can install Docker on any OS but Docker Engine runs natively on Linux distribution.
 - Docker is written in the Go language.
@@ -14,22 +14,22 @@ you can manage your infrastructure in the same ways you manage your applications
 
 ### Advanatage of Docker:
 
-- No pre-allocation of RAM
+- No pre-allocation of RAM.
 - Continues Integration (CI) Efficiency -> Docker enables you to build a container image and
   use that same image across every step of the deployment process.
-- Less cost
-- It is light in weight
-- It can re-use the image
+- Less cost.
+- It is light in weight.
+- It can re-use the image.
 - It can run on physical H/W, Virtual H/W, or on cloud.
 - It took very little time to create a container.
 
 ### Disadvanatges of Docker:
 
-- Docker is not a good solution for applications that require rich GUI
-- Difficult to manage large amounts of containers
+- Docker is not a good solution for applications that require rich GUI.
+- Difficult to manage large amounts of containers.
 - Docker does not provide cross-platform compatibility means if an application is designed to
   run in a docker container on Windows, then it can`t run on Linux or vice-versa
-- No solutions for Data recovery and backup
+- No solutions for Data recovery and backup.
 - Docker is suitable when the development OS and testing OS are the same.
 
 ## Why to use Docker ?
@@ -53,24 +53,24 @@ you can manage your infrastructure in the same ways you manage your applications
 
 ## Docker Client:
 
-- Docker users can interact with the docker daemon through a client (CLI)
-- The Docker client uses CLI and Rest API to communicate with the Docker daemon
+- Docker users can interact with the docker daemon through a client (CLI).
+- The Docker client uses CLI and Rest API to communicate with the Docker daemon.
 - When a client runs any server command on the docker client terminal, the client terminal
-  sends these docker commands to the docker daemon
+  sends these docker commands to the docker daemon.
 - The client can communicate with more than one daemon.
 
 ## Docker Daemon:
 
-- Docker daemon runs on the Host OS
-- It is responsible for running container to manage docker services
-- Docker daemon can communicate with other daemon
+- Docker daemon runs on the Host OS.
+- It is responsible for running container to manage docker services.
+- Docker daemon can communicate with other daemon.
 
 ## Docker Hub/ Registry:
 
-- The Docker registry manages and stores the docker images
-- There are two types of registries in the docker
-  Public registry: is also called docker hub
-  Private registry: it is used to share images within the enterprise
+- The Docker registry manages and stores the docker images.
+- There are two types of registries in the docker.
+  Public registry: is also called docker hub.
+  Private registry: it is used to share images within the enterprise.
 
 ## Docker Images:
 
@@ -86,6 +86,6 @@ Single file with all dependencies and configuration required to run a program.
 
 Ways to create a Images (Three ways):
 
-1. Take images from Docker Hub
-2. Create image form Docker file
-3. Create image from existing docker container
+1. Take images from Docker Hub.
+2. Create image form Docker file.
+3. Create image from existing docker container.
