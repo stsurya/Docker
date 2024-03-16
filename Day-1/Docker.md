@@ -47,4 +47,44 @@ you can manage your infrastructure in the same ways you manage your applications
   development.
 - **Version Control:** Versioned images for easy tracking and rollback.
 
+## Architecture of Docker
+
 ![](https://docs.docker.com/get-started/images/docker-architecture.webp)
+
+## Docker Client:
+
+- Docker users can interact with the docker daemon through a client (CLI)
+- The Docker client uses CLI and Rest API to communicate with the Docker daemon
+- When a client runs any server command on the docker client terminal, the client terminal
+  sends these docker commands to the docker daemon
+- The client can communicate with more than one daemon.
+
+## Docker Daemon:
+
+- Docker daemon runs on the Host OS
+- It is responsible for running container to manage docker services
+- Docker daemon can communicate with other daemon
+
+## Docker Hub/ Registry:
+
+- The Docker registry manages and stores the docker images
+- There are two types of registries in the docker
+  Public registry: is also called docker hub
+  Private registry: it is used to share images within the enterprise
+
+## Docker Images:
+
+Docker image is a lightweight, standalone package that contains all the necessary components (code,
+runtime, libraries, and system tools) to run a software application. It serves as a blueprint for creating
+Docker containers, providing consistency and portability across different environments. Images are
+created using Dockerfiles, stored in registries like Docker Hub, and can be easily pulled, pushed, and
+shared.
+Or
+Docker images are the read-only binary templates used to create a docker container
+Or
+Single file with all dependencies and configuration required to run a program
+Ways to create a Images (Three ways )
+
+1. Take images from Docker Hub
+2. Create image form Docker file
+3. Create image from existing docker container
