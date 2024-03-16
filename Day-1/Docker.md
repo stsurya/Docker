@@ -46,3 +46,5 @@ you can manage your infrastructure in the same ways you manage your applications
 - **Microservices Ready:** Ideal for microservices architecture, enabling modular
   development.
 - **Version Control:** Versioned images for easy tracking and rollback.
+
+![](https://docs.docker.com/get-started/images/docker-architecture.webp)
