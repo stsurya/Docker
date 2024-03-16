@@ -1,15 +1,13 @@
-📦 What is a container?
-A container is like a package for software. It bundles up all the necessary parts of a program, such as the code and its supporting tools, so that it can work smoothly wherever it's run.
-Think of it as a neat little box that holds everything a program needs to run, making it easy to move around and use on different computers. Containers are lightweight and can run on their own,
-just like little software packages that can be moved around easily.
+## What is Docker ?
 
-🔄 Containers vs Virtual Machines:
-📊 Resource Usage: Containers are lighter because they share the operating system with the computer they run on. Virtual machines are heavier because they each have their own operating system.
-🌐 Moving Around: Containers can run on different computers easily. Virtual machines need specific software to run them, so they're not as easy to move.
-🔒 Security: Virtual machines are more secure because they're like separate little computers. Containers share the same system, so they're not as isolated.
-🔧 Managing Them: Containers are simpler to handle because they're designed to be quick and light. Virtual machines need more attention because they're more like full computers.
+Docker is an open platform for developing, shipping, and running applications. Docker enables you to
+separate your applications from your infrastructure so you can deliver software quickly. With Docker,
+you can manage your infrastructure in the same ways you manage your applications.
 
-💡 Why are containers lightweight?
-Containers are light because they share stuff with the computer they run on. They don't carry their own full operating system, like a virtual machine does.
-Instead, they borrow from what's already there, which makes them smaller and quicker. This sharing is possible because of something called containerization.
-So, compared to virtual machines, which need their own complete operating system, containers are much lighter. And Docker, which makes these containers, trims them down even more, only keeping what's essential for the program to work.
+- Docker release March 2013 by Solomon Hykes and Sebastian
+- Docker is a platform as a service that uses OS-level virtualization
+- Docker is an open-source centralized platform designed to create deploy and run applications
+- Docker uses a container on the Host OS to run applications. It allows applications to use the same host computer rather than creating a whole Virtual OS.
+- We can install Docker on any OS but Docker Engine runs natively on Linux distribution.
+- Docker is written in the Go language.
+- Docker is a tool that performs OS-level Virtualization, also known as centralization.
