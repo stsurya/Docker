@@ -11,3 +11,23 @@ you can manage your infrastructure in the same ways you manage your applications
 - We can install Docker on any OS but Docker Engine runs natively on Linux distribution.
 - Docker is written in the Go language.
 - Docker is a tool that performs OS-level Virtualization, also known as centralization.
+
+### Advanatage of Docker:
+
+- No pre-allocation of RAM
+- Continues Integration (CI) Efficiency -> Docker enables you to build a container image and
+  use that same image across every step of the deployment process.
+- Less cost
+- It is light in weight
+- It can re-use the image
+- It can run on physical H/W, Virtual H/W, or on cloud.
+- It took very little time to create a container.
+
+### Disadvanatges of Docker:
+
+- Docker is not a good solution for applications that require rich GUI
+- Difficult to manage large amounts of containers
+- Docker does not provide cross-platform compatibility means if an application is designed to
+  run in a docker container on Windows, then it can`t run on Linux or vice-versa
+- No solutions for Data recovery and backup
+- Docker is suitable when the development OS and testing OS are the same.
