@@ -31,3 +31,18 @@ you can manage your infrastructure in the same ways you manage your applications
   run in a docker container on Windows, then it can`t run on Linux or vice-versa
 - No solutions for Data recovery and backup
 - Docker is suitable when the development OS and testing OS are the same.
+
+## Why to use Docker ?
+
+- **Consistency:** Ensure applications run the same way in various environments.
+- **Portability:** Easily move applications between different machines.
+- **Efficiency:** Use resources more effectively with lightweight containers.
+- **Isolation:** Run applications independently, avoiding conflicts.
+- **Ease of Deployment:** Streamline deployment with standardized container images.
+- **Scalability:** Scale applications easily using orchestration tools.
+- **DevOps Integration:** Support for DevOps practices and CI/CD pipelines.
+- **Community Support:** Large community and repository for sharing containerized
+  applications.
+- **Microservices Ready:** Ideal for microservices architecture, enabling modular
+  development.
+- **Version Control:** Versioned images for easy tracking and rollback.
