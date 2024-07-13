@@ -49,7 +49,7 @@ you can manage your infrastructure in the same ways you manage your applications
 
 ## Architecture of Docker
 
-![](https://docs.docker.com/get-started/images/docker-architecture.webp)
+![](./image.png)
 
 ## Docker Client:
 
