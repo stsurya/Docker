@@ -1,3 +1,13 @@
+## What is Container ?
+
+A container is a lightweight, portable, and self-sufficient software package that includes an application and all its dependencies, ensuring consistent behavior across different environments. It isolates the application from the host system, providing a controlled environment with its own file system, libraries, and configuration files. Containers can run anywhere—on a developer's machine, a test server, or in production—without modification. They are managed using containerization platforms like Docker and orchestrated with tools like Kubernetes.
+
+## Why are containers light weight ?
+
+- **Shared OS:** Containers share the host OS system without actually needing the whole OS kernel instead of having their own. This means they don't need to include a full OS, which makes them smaller and faster
+- Containers only package the application and its immediate dependencies, not the entire OS. This makes them much lighter compared to virtual machines (VMs), which include a full OS.
+- **Quick Start-Up:** Because they are smaller and share the host OS, containers can start up and shut down very quickly, often in just a few seconds.
+
 ## What is Docker ?
 
 Docker is an open platform for developing, shipping, and running applications. Docker enables you to
@@ -89,3 +99,7 @@ Ways to create a Images (Three ways):
 1. Take images from Docker Hub.
 2. Create image form Docker file.
 3. Create image from existing docker container.
+
+## What is container ?
+
+- A container is a package that includes everything the application needs, such as code, libraries, and dependencies. It's easy to move from one environment to another environment as it's isloated, portable and standarized.
