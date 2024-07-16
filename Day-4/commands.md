@@ -45,6 +45,10 @@ This will restart the container.
 
 Removes a stopped container.
 
+### docker rm -f <Container_ID>
+
+This will delete the container eventhough it's up and running.
+
 ### docker rmi
 
 Removes an image from the host machine.
@@ -76,3 +80,11 @@ Run a command in a running container.
 ### docker network
 
 Manage Docker networks such as creating and removing networks, and connecting containers to networks.
+
+### docker network ls
+
+to list all the network
+
+### docker network inspect <network_ID>
+
+To check or troubleshoot
