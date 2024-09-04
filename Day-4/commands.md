@@ -69,6 +69,10 @@ Renaming an existing container. docker <old_container_name> <new_container_name>
 
 This command will dispaly all the ID's of images.
 
+### How to remove multiple docker images in one command
+
+docker rmi $(docker images -q)
+
 ### docker logs <container_ID>
 
 To see the logs od container.
