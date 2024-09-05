@@ -92,3 +92,7 @@ to list all the network
 ### docker network inspect <network_ID>
 
 To check or troubleshoot
+
+### docker history <image_name>
+
+This will show all the layers that has been created on this particular image
