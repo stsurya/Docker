@@ -55,3 +55,14 @@ Try running a simple Docker container to verify if Docker networking is working:
 ```
 sudo docker run hello-world
 ```
+
+Check the file daemon.json file exists
+`/etc/docker/daemon.json`
+
+if not create it and add the below content
+
+```
+{
+  "dns": ["8.8.8.8", "8.8.4.4"]
+}
+```
