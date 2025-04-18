@@ -60,6 +60,7 @@ export default function Record() {
         });
       } else {
         // if we are updating a record we will PATCH to /record/:id.
+        console.log("params id=",params.id)
         response = await fetch(`http://localhost:5050/record/${params.id}`, {
           method: "PATCH",
           headers: {
