@@ -25,6 +25,11 @@ Volumes can be created and managed using the docker volume command. You can crea
 docker volume create <volume_name>
 ```
 
+This command creates the volume on the Docker host, not inside the container.
+
+`/var/lib/docker/volumes/mydata/_data`
+
+`docker inspect <volume_name>`
 Once a volume is created, you can mount it to a container using the -v or --mount option when running a docker run command.
 
 For example:
