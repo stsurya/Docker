@@ -26,6 +26,12 @@ containers to communicate with each other and with the host system.
 If you want to secure your containers and isolate them from the default bridge network you can also create your own bridge network.
 
 ```
+docker network create my-net
+docker run -d --name mongo --network my-net mongo
+docker run -d --name app --network my-net my-app-image
+```
+
+```
 docker network create -d bridge my_bridge
 ```
 
