@@ -31,6 +31,8 @@ docker run -d --name mongo --network my-net mongo
 docker run -d --name app --network my-net my-app-image
 ```
 
+`docker network connect <network> <container>	Connect a container to a network`
+
 ```
 docker network create -d bridge my_bridge
 ```
