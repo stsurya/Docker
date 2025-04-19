@@ -96,3 +96,13 @@ To check or troubleshoot
 ### docker history <image_name>
 
 This will show all the layers that has been created on this particular image
+
+### docker system prune -f
+
+Stopped containers
+
+Unused networks
+
+Dangling images (images not tagged and not referenced by any container)
+
+Build cache
