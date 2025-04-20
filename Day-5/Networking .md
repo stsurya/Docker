@@ -93,3 +93,16 @@ This mode enables communication between containers across multiple Docker host m
 ### Macvlan Networking
 
 This mode allows a container to appear on the network as a physical host rather than as a container.
+
+### what is docker0 ?
+
+- When docker is installed it create a virtual network bridge interface called `docker0`.
+- Containers launched in the default bridge network are connected to `docker0`.
+- It assigns a private IP to each container (e.g., 172.17.0.x).
+- This allows containers to talk internally through the bridge, even though they're isolated.
+
+### what is veth ?
+
+- This is like a wire which connects the container to the host.
+- One end stays inside the container as eth0
+- The other end connects to the host bridge (e.g., docker0)
