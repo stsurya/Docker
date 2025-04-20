@@ -35,18 +35,24 @@ Once a volume is created, you can mount it to a container using the -v or --moun
 For example:
 
 ```
-docker run -it -v <volume_name>:/data <image_name> /bin/bash
+docker run -dit --name volume-test -v mydata:/data busybox
 ```
 
-This command will mount the volume <volume_name> to the /data directory in the container. Any data written to the /data directory
-inside the container will be persisted in the volume on the host file system.
+Docker checks if a volume named mydata exists.<br>
+
+If not, it creates one.<br>
+
+That volume is mounted inside the container at /data.<br>
+
+Any files written to /data inside the container get stored in the mydata volume on the host.<br>
+
+Even if you delete the container, the data in mydata is persistent.<br>
 
 ### Bind Directory on a host as a Mount
 
-Bind mounts also aims to solve the same problem but in a complete different way.
+Bind mounts also aims to solve the same problem but in a complete different way.<br>
 
-Using this way, user can mount a directory from the host file system into a container. Bind mounts have the same behavior as volumes, but
-are specified using a host path instead of a volume name.
+Using this way, user can mount a directory from the host file system into a container. Bind mounts have the same behavior as volumes, but are specified using a host path instead of a volume name.
 
 For example,
 
