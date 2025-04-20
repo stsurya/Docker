@@ -106,3 +106,7 @@ This mode allows a container to appear on the network as a physical host rather 
 - This is like a wire which connects the container to the host.
 - One end stays inside the container as eth0
 - The other end connects to the host bridge (e.g., docker0)
+
+### Note
+
+By default if two containers are on bridge network, they can communicate with IP address not with container names, but when they're on custom/user-defined network they can even communicate with container names.
