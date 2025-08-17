@@ -10,7 +10,7 @@ function App() {
 
   // Fetch all records
   const fetchRecords = () => {
-    fetch('http://localhost:5000/records')
+    fetch('http://localhost:5000/api/records') // ✅ already correct
       .then(res => res.json())
       .then(data => setRecords(data))
       .catch(console.error);
@@ -25,11 +25,11 @@ function App() {
     if (!title) return alert('Title is required');
     const newRecord = { title, description };
     try {
-      const res = await fetch('http://localhost:5000/records', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newRecord),
-      });
+      const res = await fetch('http://localhost:5000/api/records', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(newRecord),
+});
       if (res.ok) {
         await res.json();
         setTitle('');
@@ -48,9 +48,9 @@ function App() {
   const deleteRecord = async (id) => {
     if (!window.confirm('Are you sure to delete this record?')) return;
     try {
-      const res = await fetch(`http://localhost:5000/records/${id}`, {
-        method: 'DELETE',
-      });
+      const res = await fetch(`http://localhost:5000/api/records/${id}`, {
+  method: 'DELETE',
+});
       if (res.ok) {
         fetchRecords();
       } else {
@@ -79,11 +79,11 @@ function App() {
   const saveEdit = async (id) => {
     if (!editTitle) return alert('Title is required');
     try {
-      const res = await fetch(`http://localhost:5000/records/${id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title: editTitle, description: editDescription }),
-      });
+      const res = await fetch(`http://localhost:5000/api/records/${id}`, {
+  method: 'PUT',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ title: editTitle, description: editDescription }),
+});
       if (res.ok) {
         cancelEdit();
         fetchRecords();

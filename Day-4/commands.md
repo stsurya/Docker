@@ -106,3 +106,186 @@ Unused networks
 Dangling images (images not tagged and not referenced by any container)
 
 Build cache
+
+
+Got it 👍 You’re asking for **all Docker CLI commands along with their filters and a brief explanation**.
+Since Docker has a large set of commands, I’ll break it into **categories** (Management, Images, Containers, Networks, Volumes, etc.), and list the **filters** available for each where applicable.
+
+---
+
+# 🐳 **Docker CLI Commands with Filters**
+
+## 1. **Docker Info & System**
+
+* `docker --version` → Show Docker version.
+* `docker info` → Show system-wide info (storage driver, runtime, etc.).
+* `docker system df` → Show disk usage.
+* `docker system prune` → Remove unused data.
+
+  * `--all` → remove all unused images.
+  * `--volumes` → remove unused volumes.
+
+---
+
+## 2. **Docker Images**
+
+* `docker images` → List images.
+  **Filters** (`--filter` or `-f`):
+
+  * `dangling=true` → only dangling images.
+  * `label=<key>` → filter by label.
+  * `reference=<name>` → match image name.
+* `docker image ls` → Same as `docker images`.
+* `docker image pull <name>` → Download image.
+* `docker image push <name>` → Upload image.
+* `docker image rm <id>` → Remove image.
+* `docker image inspect <id>` → Detailed info.
+* `docker image prune` → Remove unused images.
+
+---
+
+## 3. **Docker Containers**
+
+* `docker ps` → List running containers.
+  **Filters:**
+
+  * `id=<id>` → filter by container ID.
+  * `name=<name>` → filter by name.
+  * `status=(created|running|paused|exited)`
+  * `ancestor=<image>` → filter by parent image.
+  * `before=<id>` / `since=<id>` → relative to another container.
+  * `label=<key>` → filter by label.
+
+* `docker ps -a` → List all containers.
+
+* `docker create <image>` → Create container (stopped).
+
+* `docker run <image>` → Run container.
+
+  * `-d` → detached.
+  * `-p 8080:80` → port mapping.
+  * `-v host:container` → volume mount.
+  * `--name <name>` → name container.
+
+* `docker start <id>` → Start container.
+
+* `docker stop <id>` → Stop container.
+
+* `docker restart <id>` → Restart container.
+
+* `docker rm <id>` → Remove container.
+
+* `docker inspect <id>` → Detailed info.
+
+* `docker logs <id>` → View logs.
+
+* `docker exec -it <id> bash` → Run command inside container.
+
+* `docker container prune` → Remove stopped containers.
+
+* `docker top <id>` → Show processes in container.
+
+* `docker stats` → Live resource usage.
+  **Filters:**
+
+  * `--filter id=<id>`
+  * `--filter name=<name>`
+
+---
+
+## 4. **Docker Networks**
+
+* `docker network ls` → List networks.
+  **Filters:**
+
+  * `driver=<driver>` → filter by driver.
+  * `id=<id>`
+  * `label=<key>`
+  * `name=<name>`
+  * `type=(builtin|custom)`
+
+* `docker network create <name>` → Create network.
+
+* `docker network inspect <name>` → Details.
+
+* `docker network connect <net> <container>` → Attach container.
+
+* `docker network disconnect <net> <container>` → Detach container.
+
+* `docker network rm <name>` → Remove network.
+
+* `docker network prune` → Remove unused networks.
+
+---
+
+## 5. **Docker Volumes**
+
+* `docker volume ls` → List volumes.
+  **Filters:**
+
+  * `dangling=true` → unused volumes.
+  * `driver=<driver>` → filter by driver.
+  * `label=<key>`
+  * `name=<name>`
+
+* `docker volume create <name>` → Create volume.
+
+* `docker volume inspect <name>` → Details.
+
+* `docker volume rm <name>` → Remove.
+
+* `docker volume prune` → Remove unused.
+
+---
+
+## 6. **Docker Build**
+
+* `docker build -t <tag> .` → Build image from Dockerfile.
+
+  * `--no-cache` → build without cache.
+  * `--build-arg <key>=<value>` → pass build args.
+* `docker history <image>` → Show layers.
+
+---
+
+## 7. **Docker Compose** (if installed)
+
+* `docker compose up -d` → Start services.
+* `docker compose down` → Stop and remove services.
+* `docker compose ps` → List services.
+* `docker compose logs` → View logs.
+
+---
+
+## 8. **Docker Events**
+
+* `docker events` → Real-time events.
+  **Filters:**
+
+  * `container=<id>`
+  * `event=<event>` (start, stop, die, etc.)
+  * `image=<name>`
+  * `label=<key>`
+  * `type=(container|network|volume|image)`
+
+---
+
+## 9. **Docker Contexts**
+
+* `docker context ls` → List contexts.
+
+  * `--filter name=<name>`
+* `docker context use <name>` → Switch context.
+
+---
+
+## 10. **Docker Registries**
+
+* `docker login <registry>` → Authenticate.
+* `docker logout <registry>` → Logout.
+* `docker search <image>` → Search Docker Hub.
+  **Filters:**
+
+  * `is-official=true` → only official images.
+  * `is-automated=true` → only automated builds.
+  * `stars=<N>` → min stars.
