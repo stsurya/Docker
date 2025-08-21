@@ -314,4 +314,98 @@ DOCKER_BUILDKIT=1 docker build .
 
 ## What does `docker build --progress=plain` do ?
 
-It’s used for detailed build logs, helpful for debugging slow or failing Docker builds, especially in CI pipelines
+It’s used for detailed build logs, helpful for debugging slow or failing Docker builds, especially in CI pipelines.
+
+## One of your containers fails immediately after starting. How would you troubleshoot it using Docker commands?
+
+### **Step 1: Check container status**
+
+```
+docker ps -a
+```
+
+* Look for `Exited` containers.
+* Note the **exit code** to get a hint of the failure type.
+
+---
+
+### **Step 2: Inspect logs**
+
+```
+docker logs <container_name_or_id>
+docker logs -f <container_name_or_id>  # follow real-time logs
+```
+
+* Look for application errors, missing files, or configuration issues.
+
+---
+
+### **Step 3: Inspect container details**
+
+```
+docker inspect <container_name_or_id>
+```
+
+* Check **environment variables**, **volume mounts**, **network settings**, **ENTRYPOINT/CMD**, and other config.
+
+---
+
+### **Step 4: Check the exit code**
+
+```
+docker inspect <container_name_or_id> --format='{{.State.ExitCode}}'
+```
+
+* Common codes:
+
+  * `0` → success
+  * `1` → general error
+  * `137` → killed by SIGKILL (OOM)
+  * `139` → segmentation fault
+
+---
+
+### **Step 5: Run container interactively**
+
+* Start a shell instead of the default command:
+
+```
+docker run -it --rm --entrypoint /bin/sh <image_name>
+```
+
+* Investigate file paths, permissions, environment variables, and try running commands manually.
+
+---
+
+### **Step 6: Check recent changes**
+
+* Compare with previously working images:
+
+```
+docker images
+```
+
+* Review recent **Dockerfile changes** or updates in dependencies.
+
+---
+
+### **Step 7: Verify configuration**
+
+* Check mounted volumes, `.env` files, or secrets.
+* Ensure environment-specific settings are correct.
+
+---
+
+### **Step 8: Optional debugging tools**
+
+* Use `docker exec` on running containers to inspect (if it starts but misbehaves).
+* Use `docker stats` to monitor memory/CPU issues.
+
+---
+
+### **Interview Tip**
+
+> Memorize this as a **linear checklist**: `ps → logs → inspect → exit code → interactive → recent changes → config → optional tools`.
+> You can walk through it quickly in an interview scenario.
+
+---
