@@ -203,3 +203,111 @@ tests/
 💡 **Interview Tip:**
 
 * Emphasize that **small base images, multi-stage builds, cache cleanup, and ignoring unnecessary files** are the main strategies to reduce image size while keeping production images secure and fast.
+
+## You notice that rebuilding a Docker image takes 10+ minutes. How would you investigate and improve build performance?
+
+Here’s an **interview-ready explanation** for investigating and improving slow Docker builds:
+
+---
+
+## **1. Identify the slow steps**
+
+* Use **`docker build --progress=plain --no-cache`** or **`docker build --target`** to see which steps take the most time.
+* Example:
+
+```
+docker build --progress=plain .
+```
+
+* Check for **heavy operations** like large downloads, many package installs, or long compilation steps.
+
+---
+
+## **2. Optimize Dockerfile for caching**
+
+Docker builds cache each layer. Slow builds often happen because cache is **invalidated too frequently**.
+
+**Tips:**
+
+1. **Order layers wisely**: Put rarely changing instructions (e.g., installing OS packages) **before frequently changing ones** (e.g., copying app code).
+
+```
+# Slow if you copy code first
+COPY . .
+RUN npm install
+
+# Faster build
+COPY package*.json .
+RUN npm install
+COPY . .
+```
+
+2. **Minimize `RUN` layers** by combining commands:
+
+```
+RUN apt-get update && \
+    apt-get install -y git curl && \
+    rm -rf /var/lib/apt/lists/*
+```
+
+3. **Use `.dockerignore`** to avoid sending unnecessary files to Docker daemon (e.g., `node_modules`, logs, tests).
+
+---
+
+## **3. Use lightweight base images**
+
+* Switch from heavy images (e.g., `ubuntu`) to smaller ones (`alpine`) when possible.
+* Smaller base images reduce layer size and build time.
+
+---
+
+## **4. Leverage multi-stage builds**
+
+* Build artifacts in a temporary stage and copy only what is needed to the final image.
+* Avoids installing development tools in production image.
+
+```
+FROM node:20-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+
+FROM node:20-alpine
+WORKDIR /app
+COPY --from=builder /app/dist ./dist
+CMD ["node", "dist/index.js"]
+```
+
+---
+
+## **5. Use build caching effectively**
+
+* **Avoid `--no-cache` unless necessary**.
+* For remote dependencies, consider **package managers’ own caches** (`npm ci` vs `npm install`, `pip cache`) or **pre-downloading large dependencies**.
+
+---
+
+## **6. Parallelize or pre-build dependencies**
+
+* For Node.js, use `npm ci` instead of `npm install`.
+* For Python, precompile wheels for heavy packages to avoid long source builds.
+
+---
+
+## **7. Use buildkit and caching**
+
+* Enable BuildKit for faster builds:
+
+```
+DOCKER_BUILDKIT=1 docker build .
+```
+
+* BuildKit supports **layer caching, parallel steps, and advanced caching strategies**.
+
+---
+
+### **Interview Summary Answer**
+
+> “When a Docker build is slow, I first identify which steps are taking the most time using `docker build --progress=plain`. Then I optimize caching by ordering Dockerfile instructions so that rarely changing steps come first, combine RUN commands, and minimize unnecessary layers. I ensure `.dockerignore` excludes unneeded files, switch to lightweight base images, and use multi-stage builds to separate build tools from the final image. Additionally, I leverage BuildKit and package manager caching to speed up dependency installation.”
