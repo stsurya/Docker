@@ -80,3 +80,126 @@ docker run myimage 8.8.8.8  # Overrides CMD, runs "ping 8.8.8.8"
 💡 **Interview Tip:**
 
 Think of ENTRYPOINT as **the “what to run”**, and CMD as **“with which default arguments”**. Using both together gives you flexible yet controlled behavior.
+
+## How would you reduce image size for a Node.js or Python application? Walk through concrete Dockerfile strategies.
+
+## **1. Choose a small base image**
+
+* **Node.js:** Use `node:alpine` instead of `node:slim` or `node:latest`.
+* **Python:** Use `python:3.11-alpine` instead of `python:3.11-slim` or full Debian/Ubuntu images.
+
+**Example:**
+
+```
+FROM node:20-alpine
+# OR
+FROM python:3.11-alpine
+```
+
+> Alpine images are much smaller (\~5–10x smaller than full Debian-based images).
+
+---
+
+## **2. Use multi-stage builds**
+
+* Useful for compiling assets or building dependencies while keeping final image minimal.
+
+**Node.js Example:**
+
+```
+# Build stage
+FROM node:20-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+
+# Production stage
+FROM node:20-alpine
+WORKDIR /app
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/node_modules ./node_modules
+CMD ["node", "dist/index.js"]
+```
+
+* Only copies **built artifacts and dependencies** to the final image, leaving dev dependencies behind.
+
+**Python Example:**
+
+```
+# Build stage
+FROM python:3.11-slim AS builder
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --user -r requirements.txt
+COPY . .
+
+# Production stage
+FROM python:3.11-alpine
+WORKDIR /app
+COPY --from=builder /root/.local /root/.local
+COPY . .
+ENV PATH=/root/.local/bin:$PATH
+CMD ["python", "app.py"]
+```
+
+---
+
+## **3. Combine and clean RUN commands**
+
+* Reduce layers and remove unnecessary caches.
+
+**Node.js Example:**
+
+```
+RUN npm install --production && \
+    npm cache clean --force
+```
+
+**Python Example:**
+
+```
+RUN pip install --no-cache-dir -r requirements.txt
+```
+
+* `--no-cache-dir` prevents pip from storing cached packages in the image.
+
+---
+
+## **4. Use `.dockerignore`**
+
+* Exclude unnecessary files (tests, docs, local config) to reduce context size and final image.
+
+```
+node_modules
+*.log
+tests/
+.env
+```
+
+---
+
+## **5. Avoid unnecessary packages**
+
+* Only install production dependencies (`npm install --production`) or required system packages (`apk add --no-cache`).
+* Avoid heavy tools or build utilities in the final image.
+
+---
+
+### **Summary Table**
+
+| Strategy             | Node.js                    | Python                             |
+| -------------------- | -------------------------- | ---------------------------------- |
+| Base image           | `node:alpine`              | `python:alpine`                    |
+| Multi-stage build    | ✅                          | ✅                                  |
+| Cache cleanup        | `npm cache clean --force`  | `--no-cache-dir`                   |
+| Combine RUN          | ✅                          | ✅                                  |
+| Ignore files         | `.dockerignore`            | `.dockerignore`                    |
+| Production deps only | `npm install --production` | pip install only required packages |
+
+---
+
+💡 **Interview Tip:**
+
+* Emphasize that **small base images, multi-stage builds, cache cleanup, and ignoring unnecessary files** are the main strategies to reduce image size while keeping production images secure and fast.
