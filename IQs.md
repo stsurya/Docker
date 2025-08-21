@@ -311,3 +311,7 @@ DOCKER_BUILDKIT=1 docker build .
 ### **Interview Summary Answer**
 
 > “When a Docker build is slow, I first identify which steps are taking the most time using `docker build --progress=plain`. Then I optimize caching by ordering Dockerfile instructions so that rarely changing steps come first, combine RUN commands, and minimize unnecessary layers. I ensure `.dockerignore` excludes unneeded files, switch to lightweight base images, and use multi-stage builds to separate build tools from the final image. Additionally, I leverage BuildKit and package manager caching to speed up dependency installation.”
+
+## What does `docker build --progress=plain` do ?
+
+It’s used for detailed build logs, helpful for debugging slow or failing Docker builds, especially in CI pipelines
