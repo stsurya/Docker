@@ -409,3 +409,31 @@ docker images
 ---
 
 ## Explain how you would monitor container resource usage (CPU, memory) and handle cases where a container consumes excessive resources.
+
+## How would you enable secure communication between containers in different Docker networks?
+
+“To enable secure communication between containers in different Docker networks, I would:
+
+1. **Connect containers across networks:** Use `docker network connect` to attach a container to multiple networks, or use an overlay network in Docker Swarm to allow containers on different networks or hosts to communicate.
+
+2. **Secure the traffic:** Implement TLS/SSL between services to encrypt communication. Certificates can be managed via Docker Secrets to avoid exposing sensitive data.
+
+3. **Optional enhancement:** In a microservices setup, a service mesh like Istio or Linkerd can provide automatic mutual TLS (mTLS) for secure service-to-service communication.
+
+This ensures both connectivity and encryption between containers across networks.”
+
+## A containerized application is accessible internally but not from the host machine. How would you debug this networking issue?
+
+“To debug this issue, I would follow these steps:
+
+Check port mapping: Ensure the container port is correctly mapped to the host port using docker run -p <host_port>:<container_port>.
+
+Verify the container is running: Use docker ps to confirm the container is up and listening on the expected port.
+
+Test connectivity inside the container: Use docker exec -it <container> curl localhost:<port> to verify the service is responding internally.
+
+Test connectivity from the host: Try curl localhost:<host_port> or telnet localhost <host_port> to see if the host can reach the container.
+
+Check firewall or security settings: Ensure host firewall or security rules are not blocking the mapped port.
+
+Inspect network mode: If using custom networks, check if the container is on the correct Docker network and whether --network=host is required for host access.
