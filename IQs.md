@@ -4,8 +4,6 @@ In Docker, I would prefer volumes for persistent data because they are managed b
 
 ## What is the difference between CMD and ENTRYPOINT in a Dockerfile? Provide a use case for each.
 
-Here’s a clear, **interview-ready explanation** of CMD vs ENTRYPOINT in a Dockerfile:
-
 ---
 
 ### **1. CMD**
@@ -409,3 +407,5 @@ docker images
 > You can walk through it quickly in an interview scenario.
 
 ---
+
+## Explain how you would monitor container resource usage (CPU, memory) and handle cases where a container consumes excessive resources.
