@@ -437,3 +437,22 @@ Test connectivity from the host: Try curl localhost:<host_port> or telnet localh
 Check firewall or security settings: Ensure host firewall or security rules are not blocking the mapped port.
 
 Inspect network mode: If using custom networks, check if the container is on the correct Docker network and whether --network=host is required for host access.
+
+## How do you integrate Docker into a CI/CD pipeline? Give an example using Azure DevOps.
+
+“To integrate Docker into a CI/CD pipeline, the key steps are **building, testing, and deploying container images** as part of the automation process. Using **Azure DevOps** as an example:
+
+1. **CI Pipeline (Build & Test):**
+
+   * Use an Azure DevOps **Pipeline YAML** or classic pipeline.
+   * **Build Docker image:** `docker build -t myapp:$(Build.BuildId) .`
+   * **Run tests inside the container** to validate functionality.
+   * **Push image to a container registry:** e.g., Azure Container Registry (ACR) with `docker push myregistry.azurecr.io/myapp:$(Build.BuildId)`
+
+2. **CD Pipeline (Deployment):**
+
+   * Pull the Docker image from ACR.
+   * Deploy to the target environment: Azure Web App for Containers, AKS, or VM.
+   * Optionally, use **rolling or blue-green deployments** to minimize downtime.
+
+This approach ensures that every commit triggers containerized builds, automated testing, and consistent deployment across environments.”
